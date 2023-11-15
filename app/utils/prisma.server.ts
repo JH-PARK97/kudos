@@ -1,3 +1,5 @@
+// DB query를 수행하기 위한 PrismaClient 인스턴스 정의
+
 import { PrismaClient } from '@prisma/client';
 
 let prisma: PrismaClient;

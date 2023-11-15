@@ -30,6 +30,8 @@ export const action = async (args: ActionFunctionArgs) => {
               }
             : {}),
     };
+
+    console.log(errors);
     if (Object.values(errors).some(Boolean)) {
         return json({ errors, fields: { email, password, firstName, lastName }, form: action }, {});
     }
@@ -61,7 +63,6 @@ export default function Login() {
         setFormData((form) => ({ ...form, [field]: event.target.value }));
     };
 
-    console.log(formData);
     return (
         <Layout>
             <div className="h-full justify-center items-center flex flex-col gap-y-4">
@@ -73,7 +74,7 @@ export default function Login() {
                     onClick={() => setAction(action == 'login' ? 'register' : 'login')}
                     className="absolute top-8 right-8 rounded-xl bg-yellow-300 font-semibold text-blue-600 px-3 py-2 transition duration-300 ease-in-out hover:bg-yellow-400 hover:-translate-y-1"
                 >
-                    {action === 'login' ? '로그인' : '회원가입'}
+                    {action === 'login' ? '회원가입' : '로그인'}
                 </button>
                 <form method="post" className="rounded-2xl bg-gray-200 p-6 w-96">
                     <FormField
